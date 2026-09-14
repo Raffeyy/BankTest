@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Meine Java Banking App</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+        h2 { color: #333; margin-bottom: 20px; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 97%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        .toggle-link { margin-top: 15px; display: block; color: #007bff; text-decoration: none; font-size: 14px; cursor: pointer; }
+        .response-box { margin-top: 20px; padding: 10px; background: #e9ecef; border-radius: 4px; font-size: 14px; color: #495057; min-height: 20px; word-break: break-all; }
+        iframe { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- REGISTRIEREN FORMULAR -->
+    <div id="registerForm">
+        <h2>Registrieren</h2>
+        <!-- target="submitTarget" sorgt dafür, dass die Seite beim Abschicken nicht neu lädt -->
+        <form action="/register" method="POST" target="submitTarget">
+            <input type="text" name="user" placeholder="Benutzername" required>
+            <input type="password" name="pass" placeholder="Passwort" required>
+            <button type="submit" onclick="startListen()">Konto erstellen</button>
+        </form>
+        <span class="toggle-link" onclick="toggleForms()">Bereits ein Konto? Hier einloggen</span>
+    </div>
+
+    <!-- LOGIN FORMULAR -->
+    <div id="loginForm" style="display: none;">
+        <h2>Login</h2>
+        <form action="/log" method="POST" target="submitTarget">
+            <input type="text" name="user" placeholder="Benutzername" required>
+            <input type="password" name="pass" placeholder="Passwort" required>
+            <button type="submit" onclick="startListen()">Einloggen</button>
+        </form>
+        <span class="toggle-link" onclick="toggleForms()">Noch kein Konto? Hier registrieren</span>
+    </div>
+
+    <!-- Hier wird die Antwort aus deinem Java-Code angezeigt -->
+    <div class="response-box" id="serverResponse">Bereit...</div>
+</div>
+
+<!-- Unsichtbares iframe, das die Serverantwort abfängt -->
+<iframe name="submitTarget" id="submitTarget"></iframe>
+
+<script>
+    // Schaltet zwischen Login und Registrierung um
+    function toggleForms() {
+        const reg = document.getElementById('registerForm');
+        const login = document.getElementById('loginForm');
+        if (reg.style.display === 'none') {
+            reg.style.display = 'block';
+            login.style.display = 'none';
+        } else {
+            reg.style.display = 'none';
+            login.style.display = 'block';
+        }
+        document.getElementById('serverResponse').innerText = "Bereit...";
+    }
+
+    // Wartet darauf, dass das iframe die Antwort von Spring Boot erhält und zeigt sie an
+    function startListen() {
+        const iframe = document.getElementById('submitTarget');
+        document.getElementById('serverResponse').innerText = "Verarbeite...";
+
+        iframe.onload = function() {
+            try {
+                const responseText = iframe.contentDocument.body.innerText || iframe.contentWindow.document.body.innerText;
+                if (responseText) {
+                    document.getElementById('serverResponse').innerText = responseText;
+                }
+            } catch (e) {
+                document.getElementById('serverResponse').innerText = "Aktion ausgeführt.";
+            }
+        };
+    }
+</script>
+
+</body>
+</html>
