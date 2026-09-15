@@ -25,35 +25,30 @@ public class UserService {
             if (userRepository.existsById(username)) {
 
                 if (echterNutzer.getPasswort().equals(password)) {
-                    return "Fehlgeschlagen: Falsches Passwort!";
+                    return "eingeloggt!";
                 } else {
 
-                    return "iban: DE" + echterNutzer.getIban();
+                    return "passwort";
 
                 }
             }
-
             return "ok";
         }
 
         public String register(String username, String password) {
 
-            DatabaseSpringboot neuerNutzer = new DatabaseSpringboot();
-
+            DatabaseSpringboot neuerNutzer = new DatabaseSpringboot(username, password);
 
             if (userRepository.existsById(username)) {
-                return username;
 
+                userRepository.save(neuerNutzer);
+            }
+            else {
+
+                userRepository.save(neuerNutzer);
+                return "erfolgreich registriert";
             }
 
-            userRepository.save(neuerNutzer);
-            new DatabaseSpringboot();
-
-
-            userRepository.save(neuerNutzer);
-
-            return username;
+            return "registriert ";
         }
     }
-
-

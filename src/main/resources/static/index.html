@@ -38,6 +38,9 @@
             <input type="password" name="pass" placeholder="Passwort" required>
             <button type="submit" onclick="startListen()">Einloggen</button>
         </form>
+        <button type="button" id="balanceButton" onclick="showBalance()" style="display: none; margin-top: 10px;">
+            Kontostand anzeigen
+        </button>
         <span class="toggle-link" onclick="toggleForms()">Noch kein Konto? Hier registrieren</span>
     </div>
 
@@ -49,6 +52,8 @@
 <iframe name="submitTarget" id="submitTarget"></iframe>
 
 <script>
+    let loggedInUser = "";
+
     // Schaltet zwischen Login und Registrierung um
     function toggleForms() {
         const reg = document.getElementById('registerForm');
@@ -61,6 +66,8 @@
             login.style.display = 'block';
         }
         document.getElementById('serverResponse').innerText = "Bereit...";
+        document.getElementById('balanceButton').style.display = 'none';
+        loggedInUser = "";
     }
 
     // Wartet darauf, dass das iframe die Antwort von Spring Boot erhält und zeigt sie an
@@ -73,11 +80,27 @@
                 const responseText = iframe.contentDocument.body.innerText || iframe.contentWindow.document.body.innerText;
                 if (responseText) {
                     document.getElementById('serverResponse').innerText = responseText;
+                    if (responseText.includes("eingeloggt!")) {
+                        loggedInUser = document.querySelector('#loginForm input[name="user"]').value;
+                        document.getElementById('balanceButton').style.display = 'block';
+                    }
                 }
             } catch (e) {
                 document.getElementById('serverResponse').innerText = "Aktion ausgeführt.";
             }
         };
+    }
+
+    function showBalance() {
+        if (!loggedInUser) {
+            return;
+        }
+
+        fetch(`/balance?user=${encodeURIComponent(loggedInUser)}`)
+            .then(response => response.text())
+            .then(balance => {
+                document.getElementById('serverResponse').innerText = balance;
+            });
     }
 </script>
 
