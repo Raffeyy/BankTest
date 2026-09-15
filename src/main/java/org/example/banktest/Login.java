@@ -16,15 +16,20 @@ import java.util.Random;
 
 
 public class Login {
+    private int erstelleNeueIban() {
+        int code = generateRandom(8);
+        return code;
+    }
 
-    public static long generateRandom(int length) {
+
+    public static int generateRandom(int length) {
         Random random = new Random();
         char[] digits = new char[length];
         digits[0] = (char) (random.nextInt(9) + '1');
         for (int i = 1; i < length; i++) {
             digits[i] = (char) (random.nextInt(10) + '0');
         }
-        return Long.parseLong(new String(digits));
+        return Integer.parseInt(new String(digits));
     }
 
 
@@ -37,10 +42,13 @@ public class Login {
 
     }
 
+
     @PostMapping("/log")
 
-    public String login(@RequestParam String user, @RequestParam String pass) {
+    public String login(@RequestParam String user, @RequestParam String pass ) {
         var optionalerNutzer = repo.findById(user);
+        DatabaseSpringboot echterNutzer = optionalerNutzer.get();
+
 
         if (optionalerNutzer.isEmpty()) {
             return "Fehlgeschlagen: Benutzername nicht gefunden!";
@@ -48,10 +56,12 @@ public class Login {
 
 
         if (repo.existsById(user)) {
-            DatabaseSpringboot echterNutzer = optionalerNutzer.get();
+
+
 
             if (echterNutzer.getPasswort().equals(pass)) {
-                return  "iban: DE" + databaseSpringboot.getIban();
+
+                return  "iban: DE" + echterNutzer.getIban();
 
             } else {
                 return "Fehlgeschlagen: Falsches Passwort!";
@@ -62,27 +72,28 @@ public class Login {
     }
 
     @PostMapping("/register")
-    public String register(@RequestParam String user, @RequestParam String pass) {
+    public String register(@RequestParam String user, @RequestParam String pass ) {
 
         DatabaseSpringboot neuerNutzer = new DatabaseSpringboot(user, pass);
+
 
 
         if (repo.existsById(user)) {
             return "benutzer existiert bereits";
 
         }
+
         repo.save(neuerNutzer);
+        new DatabaseSpringboot(user, pass);
 
+        int frischeIban = erstelleNeueIban();
 
-        neuerNutzer.setIban(generateRandom(12));
+        neuerNutzer.setIban(frischeIban);
+
+        repo.save(neuerNutzer);
 
         return"Konto wurde erstellt";
 
-
-
-
     }
-
-
 
 }

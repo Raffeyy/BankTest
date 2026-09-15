@@ -10,7 +10,7 @@ public class DatabaseSpringboot {
     private String username;
     private String passwort;
     private double balance = 0.0;
-    private long iban;
+    private int iban;
 
     public DatabaseSpringboot() {}
 
@@ -22,7 +22,7 @@ public class DatabaseSpringboot {
         this.iban = iban;
     }
 
-    // 3. Deine Getter und Setter (die sind perfekt!)
+
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
 
@@ -32,8 +32,8 @@ public class DatabaseSpringboot {
     public double getBalance() { return balance; }
     public void setBalance(double balance) { this.balance = balance; }
 
-    public long getIban() { return  iban; }
-    public void setIban(long iban) { this.iban = iban;}
+    public int getIban() { return  iban; }
+    public void setIban(int iban) { this.iban = iban;}
 
     }
 
