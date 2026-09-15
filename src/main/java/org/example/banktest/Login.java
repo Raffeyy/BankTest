@@ -1,26 +1,20 @@
 package org.example.banktest;
 
-
 import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
 @RestController
 
 
 public class Login {
+    
     private final DatabaseSpringbootRepository repo;
     DatabaseSpringboot databaseSpringboot = new DatabaseSpringboot();
 
-
-
-
     public Login(DatabaseSpringbootRepository repo) {
         this.repo = repo; // Hier wird die Variable sauber initialisiert
-
 
     }
 
@@ -31,7 +25,6 @@ public class Login {
         if (optionalerNutzer.isEmpty()) {
             return "Fehlgeschlagen: Benutzername nicht gefunden!";
         }
-
 
         if (repo.existsById(user)) {
             DatabaseSpringboot echterNutzer = optionalerNutzer.get();
@@ -60,10 +53,6 @@ public class Login {
 
 
         return"Konto wurde erstellt";
-
-
-
-
     }
 
 
