@@ -12,7 +12,8 @@ public class DatabaseSpringboot {
     private double balance = 0.0;
     private int iban;
 
-    public DatabaseSpringboot() {}
+    public DatabaseSpringboot() {
+    }
 
 
     public DatabaseSpringboot(String username, String passwort) {
@@ -23,19 +24,38 @@ public class DatabaseSpringboot {
     }
 
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
-
-    public String getPasswort() { return passwort; }
-    public void setPasswort(String passwort) { this.passwort = passwort; }
-
-    public double getBalance() { return balance; }
-    public void setBalance(double balance) { this.balance = balance; }
-
-    public int getIban() { return  iban; }
-    public void setIban(int iban) { this.iban = iban;}
-
-
-
+    public String getUsername() {
+        return username;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public int getIban() {
+        return iban;
+    }
+
+    public void setIban(int iban) {
+        this.iban = iban;
+    }
+
+
+}
 
