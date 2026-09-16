@@ -9,7 +9,7 @@ public class DatabaseSpringboot {
     @Id
     private String username;
     private String passwort;
-    private double balance = 0.0;
+    private double balance;
     private int iban;
 
     public DatabaseSpringboot() {

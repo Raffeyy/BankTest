@@ -9,10 +9,13 @@ public class PasswordService {
 
     private final UserRepository userRepository;
 
+    DatabaseSpringboot databaseSpringboot = new DatabaseSpringboot();
+
 
     public PasswordService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 
     public String forgotPassword(String user, String password) {
         DatabaseSpringboot newPassword = new DatabaseSpringboot(user, password);
@@ -22,12 +25,20 @@ public class PasswordService {
         if (optionalerNutzer.isEmpty()) {
 
             return "Dieses Konto existiert nicht";
+
         } else {
             userRepository.save(newPassword);
         }
 
         return "Neues passwort wurde erstellt";
     }
+
+    public double setBalance(double balance) {
+        DatabaseSpringboot newBalance = new DatabaseSpringboot();
+
+        return balance;
+    }
+
 }
 
 

@@ -351,6 +351,118 @@
             font-size: 0.9rem;
         }
 
+        .hero-panel {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding: 28px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px;
+            color: white;
+            background: linear-gradient(120deg, #14285a, #2457d6 60%, #42b883);
+            box-shadow: 0 18px 38px rgba(29, 64, 145, 0.18);
+        }
+
+        .hero-panel::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            right: -80px;
+            top: -110px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.05), 0 0 0 58px rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-panel h2 {
+            margin: 0 0 10px;
+            font-size: clamp(1.4rem, 3vw, 2.1rem);
+        }
+
+        .hero-panel p {
+            max-width: 560px;
+            margin: 0;
+            color: #dce7ff;
+            line-height: 1.6;
+        }
+
+        .hero-stat {
+            align-self: center;
+            position: relative;
+            z-index: 1;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-stat span {
+            display: block;
+            color: #c9d7ff;
+            font-size: 0.8rem;
+        }
+
+        .hero-stat strong {
+            display: block;
+            margin-top: 8px;
+            font-size: 1.45rem;
+        }
+
+        .loan-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 20px;
+        }
+
+        .loan-benefits {
+            padding: 24px;
+            border-radius: 16px;
+            color: white;
+            background: linear-gradient(145deg, #193f9f, #2457d6);
+        }
+
+        .loan-benefits h3 {
+            margin-top: 0;
+        }
+
+        .loan-benefits ul {
+            display: grid;
+            gap: 14px;
+            padding: 0;
+            list-style: none;
+            color: #dce7ff;
+        }
+
+        .loan-benefits li::before {
+            margin-right: 9px;
+            color: #72e0b0;
+            content: "✓";
+            font-weight: 800;
+        }
+
+        .loan-result {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border: 1px solid #bce8d2;
+            border-radius: 12px;
+            color: var(--success);
+            background: #effbf5;
+            font-weight: 700;
+        }
+
+        .loan-result.visible {
+            display: block;
+        }
+
+        .loan-form .primary-button {
+            margin-top: 26px;
+        }
+
         @media (max-width: 760px) {
             .auth-card, .app-layout {
                 grid-template-columns: 1fr;
@@ -387,6 +499,1756 @@
             .cards, .form-grid {
                 grid-template-columns: 1fr;
             }
+
+            .hero-panel, .loan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-launcher {
+                right: 16px;
+                bottom: 16px;
+            }
+
+            .ai-window {
+                right: 16px;
+                bottom: 76px;
+            }
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 8% 8%, rgba(65, 112, 255, 0.12), transparent 28rem),
+                radial-gradient(circle at 92% 88%, rgba(39, 190, 137, 0.10), transparent 24rem),
+                var(--background);
+        }
+
+        .auth-screen {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-screen::before,
+        .auth-screen::after {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(36, 87, 214, 0.12);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .auth-screen::before {
+            top: -110px;
+            right: 8%;
+        }
+
+        .auth-screen::after {
+            bottom: -140px;
+            left: 7%;
+        }
+
+        .auth-card {
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 30px 80px rgba(32, 55, 110, 0.18);
+        }
+
+        .auth-intro {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(145deg, rgba(37, 87, 214, 0.98), rgba(25, 63, 159, 0.98)),
+                #2457d6;
+        }
+
+        .auth-intro::after {
+            position: absolute;
+            right: -90px;
+            bottom: -100px;
+            width: 260px;
+            height: 260px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 50%;
+            box-shadow: 0 0 0 35px rgba(255, 255, 255, 0.04), 0 0 0 70px rgba(255, 255, 255, 0.03);
+            content: "";
+        }
+
+        .auth-intro h1,
+        .auth-intro p,
+        .auth-intro .brand {
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-intro p {
+            max-width: 330px;
+        }
+
+        .auth-form {
+            background: rgba(255, 255, 255, 0.96);
+        }
+
+        .primary-button {
+            box-shadow: 0 10px 20px rgba(36, 87, 214, 0.20);
+            transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(36, 87, 214, 0.28);
+        }
+
+        .app-layout {
+            background: rgba(247, 250, 255, 0.72);
+        }
+
+        .sidebar {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 100% 0, rgba(74, 124, 255, 0.30), transparent 17rem),
+                linear-gradient(180deg, #14285a, #0f1d43);
+            box-shadow: 12px 0 30px rgba(18, 35, 78, 0.08);
+        }
+
+        .sidebar::after {
+            position: absolute;
+            right: -110px;
+            bottom: 80px;
+            width: 230px;
+            height: 230px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .sidebar .brand,
+        .sidebar .nav,
+        .sidebar .logout-button {
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-button,
+        .logout-button {
+            transition: background 160ms ease, transform 160ms ease, color 160ms ease;
+        }
+
+        .nav-button:hover {
+            transform: translateX(3px);
+        }
+
+        .content {
+            max-width: 1500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: relative;
+        }
+
+        .topbar::after {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border: 1px solid #bce8d2;
+            border-radius: 999px;
+            color: var(--success);
+            background: #effbf5;
+            content: "●  Konto geschützt";
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .avatar {
+            box-shadow: 0 8px 18px rgba(36, 87, 214, 0.25);
+        }
+
+        .card,
+        .panel {
+            border-color: rgba(222, 229, 241, 0.95);
+            box-shadow: 0 12px 32px rgba(27, 48, 91, 0.055);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .card:hover,
+        .panel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 38px rgba(27, 48, 91, 0.10);
+        }
+
+        .card:first-child {
+            color: white;
+            border: 0;
+            background: linear-gradient(135deg, #2457d6, #193f9f);
+        }
+
+        .card:first-child .card-label {
+            color: #dce7ff;
+        }
+
+        .card:first-child .balance {
+            font-size: 2.15rem;
+        }
+
+        .balance {
+            letter-spacing: -0.03em;
+        }
+
+        .transaction {
+            transition: padding 160ms ease, background 160ms ease;
+        }
+
+        .transaction:hover {
+            padding-right: 10px;
+            padding-left: 10px;
+            border-radius: 10px;
+            background: #f7f9fd;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Premium visual layer */
+        :root {
+            --background: #f5f5f7;
+            --surface: rgba(255, 255, 255, 0.78);
+            --primary: #111111;
+            --primary-dark: #000000;
+            --text: #1d1d1f;
+            --muted: #86868b;
+            --border: rgba(0, 0, 0, 0.08);
+            --success: #16834f;
+            --danger: #c93434;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.10);
+        }
+
+        body {
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.95), transparent 28rem),
+                radial-gradient(circle at 90% 100%, rgba(210, 225, 255, 0.48), transparent 31rem),
+                #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+            "Helvetica Neue", Arial, sans-serif;
+            letter-spacing: -0.012em;
+        }
+
+        .auth-screen {
+            background: transparent;
+        }
+
+        .auth-card {
+            grid-template-columns: minmax(300px, 0.88fr) minmax(340px, 1.12fr);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: 0 35px 100px rgba(0, 0, 0, 0.14);
+            backdrop-filter: blur(30px);
+        }
+
+        .auth-intro {
+            padding: 56px;
+            background: #111111;
+        }
+
+        .auth-intro h1 {
+            max-width: 360px;
+            margin-top: 130px;
+            font-size: clamp(2.45rem, 5vw, 4.3rem);
+            font-weight: 700;
+            letter-spacing: -0.065em;
+        }
+
+        .auth-intro p {
+            max-width: 320px;
+            color: #a1a1a6;
+            font-size: 1.02rem;
+        }
+
+        .brand {
+            letter-spacing: -0.025em;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            color: #111111;
+            background: #ffffff;
+            font-size: 0.7rem;
+        }
+
+        .auth-form {
+            padding: 58px;
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .auth-form h2 {
+            font-size: 2rem;
+            letter-spacing: -0.045em;
+        }
+
+        .subtitle,
+        .notice {
+            color: var(--muted);
+        }
+
+        label {
+            margin-top: 22px;
+            color: #4b4b4f;
+            font-size: 0.78rem;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        input,
+        select {
+            padding: 15px 0;
+            border: 0;
+            border-bottom: 1px solid #d2d2d7;
+            border-radius: 0;
+            background: transparent;
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #111111;
+            box-shadow: 0 1px 0 #111111;
+        }
+
+        .primary-button,
+        .secondary-button {
+            border-radius: 999px;
+            letter-spacing: -0.01em;
+        }
+
+        .primary-button {
+            color: #ffffff;
+            background: #111111;
+            box-shadow: none;
+        }
+
+        .primary-button:hover {
+            background: #2f2f32;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .secondary-button {
+            color: #111111;
+            background: #f0f0f2;
+        }
+
+        .app-layout {
+            grid-template-columns: 270px 1fr;
+            background: transparent;
+        }
+
+        .sidebar {
+            padding: 34px 22px;
+            color: #ffffff;
+            background: rgba(17, 17, 17, 0.96);
+            box-shadow: 18px 0 45px rgba(0, 0, 0, 0.07);
+        }
+
+        .sidebar .brand {
+            padding: 0 14px 64px;
+        }
+
+        .sidebar .brand-mark {
+            color: #ffffff;
+            background: #ffffff;
+        }
+
+        .nav {
+            gap: 5px;
+        }
+
+        .nav-button,
+        .logout-button {
+            padding: 14px 16px;
+            border-radius: 12px;
+            color: #8e8e93;
+            font-size: 0.94rem;
+        }
+
+        .nav-button:hover,
+        .nav-button.active {
+            color: #ffffff;
+            background: #2c2c2e;
+        }
+
+        .logout-button {
+            color: #ffb4b4;
+            background: #242426;
+        }
+
+        .content {
+            padding: 46px clamp(24px, 6vw, 92px);
+        }
+
+        .topbar {
+            margin-bottom: 42px;
+        }
+
+        .topbar h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: -0.06em;
+        }
+
+        .topbar p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .topbar::after {
+            border: 0;
+            color: #16834f;
+            background: #e9f8ef;
+            letter-spacing: 0;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            color: #ffffff;
+            background: #111111;
+            box-shadow: none;
+        }
+
+        .hero-panel {
+            min-height: 240px;
+            padding: 36px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #111111, #343438);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.14);
+        }
+
+        .hero-panel h2 {
+            max-width: 580px;
+            font-size: clamp(1.8rem, 4vw, 3.25rem);
+            letter-spacing: -0.06em;
+        }
+
+        .hero-panel p {
+            color: #a1a1a6;
+        }
+
+        .hero-stat {
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .cards {
+            gap: 20px;
+        }
+
+        .card,
+        .panel {
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.055);
+            backdrop-filter: blur(18px);
+        }
+
+        .card:hover,
+        .panel:hover {
+            box-shadow: 0 22px 46px rgba(0, 0, 0, 0.09);
+        }
+
+        .card:first-child {
+            background: #111111;
+        }
+
+        .card:first-child .balance {
+            font-size: 2.5rem;
+        }
+
+        .card-label {
+            color: var(--muted);
+        }
+
+        .card:first-child .card-label {
+            color: #a1a1a6;
+        }
+
+        .balance {
+            letter-spacing: -0.06em;
+        }
+
+        .loan-benefits {
+            border-radius: 20px;
+            background: linear-gradient(145deg, #1c1c1e, #3a3a3c);
+        }
+
+        .loan-benefits p,
+        .loan-benefits li {
+            color: #a1a1a6;
+        }
+
+        .loan-benefits li::before {
+            color: #ffffff;
+        }
+
+        .transaction {
+            padding: 18px 0;
+        }
+
+        code {
+            padding: 3px 7px;
+            border-radius: 6px;
+            color: #55555a;
+            background: #f0f0f2;
+            font-size: 0.85em;
+        }
+
+        .brand {
+            gap: 12px;
+        }
+
+        .brand-logo {
+            display: block;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 auto;
+            filter: drop-shadow(0 7px 14px rgba(0, 0, 0, 0.18));
+        }
+
+        .brand-name {
+            display: grid;
+            gap: 1px;
+            line-height: 1;
+        }
+
+        .brand-name strong {
+            letter-spacing: -0.045em;
+        }
+
+        .brand-name small {
+            color: #8e8e93;
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .auth-intro .brand-name small {
+            color: #a1a1a6;
+        }
+
+        .brand-logo .logo-orbit {
+            transform-origin: center;
+            animation: logo-orbit 12s linear infinite;
+        }
+
+        @keyframes logo-orbit {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .sidebar-footer {
+            position: absolute;
+            right: 22px;
+            bottom: 26px;
+            left: 22px;
+            z-index: 1;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 14px;
+            color: #8e8e93;
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 0.76rem;
+            line-height: 1.45;
+        }
+
+        .sidebar-footer strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #f5f5f7;
+        }
+
+        .sidebar .logout-button {
+            margin-top: 28px;
+        }
+
+        .sidebar .sidebar-footer {
+            position: relative;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            margin-top: 16px;
+        }
+
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.32);
+            transform: scale(0);
+            pointer-events: none;
+            animation: ripple 600ms ease-out;
+        }
+
+        @keyframes ripple {
+            to {
+                opacity: 0;
+                transform: scale(18);
+            }
+        }
+
+        .live-clock {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.02em;
+        }
+
+        .ai-launcher {
+            position: fixed;
+            right: 28px;
+            bottom: 28px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px 12px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            color: #ffffff;
+            background: #111111;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+            font-weight: 700;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .ai-launcher:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
+        }
+
+        .ai-launcher-logo {
+            display: grid;
+            width: 32px;
+            height: 32px;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5b7cff, #8f6bff);
+            font-size: 0.8rem;
+        }
+
+        .ai-window {
+            position: fixed;
+            right: 28px;
+            bottom: 88px;
+            z-index: 19;
+            display: none;
+            flex-direction: column;
+            width: min(390px, calc(100vw - 32px));
+            height: min(590px, calc(100vh - 120px));
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(24px);
+        }
+
+        .ai-window.open {
+            display: flex;
+            animation: ai-rise 220ms ease-out;
+        }
+
+        @keyframes ai-rise {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #111111, #343438);
+        }
+
+        .ai-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-title strong,
+        .ai-title span {
+            display: block;
+        }
+
+        .ai-title span {
+            margin-top: 3px;
+            color: #a1a1a6;
+            font-size: 0.76rem;
+        }
+
+        .ai-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .ai-messages {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px;
+            overflow-y: auto;
+            background: #f5f5f7;
+        }
+
+        .ai-message {
+            max-width: 84%;
+            padding: 11px 13px;
+            border-radius: 15px;
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .ai-message.bot {
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            color: #3a3a3c;
+            background: #ffffff;
+        }
+
+        .ai-message.user {
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            color: #ffffff;
+            background: #111111;
+        }
+
+        .ai-suggestions {
+            display: flex;
+            gap: 7px;
+            padding: 0 14px 12px;
+            overflow-x: auto;
+            background: #f5f5f7;
+        }
+
+        .ai-suggestion {
+            flex: 0 0 auto;
+            padding: 8px 10px;
+            border: 1px solid #d2d2d7;
+            border-radius: 999px;
+            color: #55555a;
+            background: #ffffff;
+            font-size: 0.75rem;
+        }
+
+        .ai-form {
+            display: flex;
+            gap: 8px;
+            padding: 13px;
+            border-top: 1px solid #e5e5ea;
+            background: #ffffff;
+        }
+
+        .ai-form input {
+            min-width: 0;
+            padding: 11px 12px;
+            border: 1px solid #d2d2d7;
+            border-radius: 999px;
+            background: #f5f5f7;
+        }
+
+        .ai-send {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+            border-radius: 50%;
+            color: #ffffff;
+            background: #111111;
+        }
+
+        body.dark-mode .ai-window,
+        body.dark-mode .ai-messages,
+        body.dark-mode .ai-form,
+        body.dark-mode .ai-suggestions {
+            background: #1c1c1e;
+        }
+
+        body.dark-mode .ai-message.bot,
+        body.dark-mode .ai-suggestion {
+            border-color: #48484a;
+            color: #f5f5f7;
+            background: #2c2c2e;
+        }
+
+        body.dark-mode .ai-form {
+            border-color: #48484a;
+        }
+
+        body.dark-mode .ai-form input {
+            border-color: #48484a;
+            color: #f5f5f7;
+            background: #2c2c2e;
+        }
+
+        body.dark-mode .brand-name small,
+        body.dark-mode .live-clock {
+            color: #a1a1a6;
+        }
+
+        body.dark-mode {
+            --background: #09090b;
+            --surface: rgba(28, 28, 30, 0.86);
+            --text: #f5f5f7;
+            --muted: #a1a1a6;
+            --border: rgba(255, 255, 255, 0.12);
+            background:
+                radial-gradient(circle at 10% 0%, rgba(80, 110, 190, 0.22), transparent 28rem),
+                radial-gradient(circle at 90% 100%, rgba(40, 130, 100, 0.16), transparent 28rem),
+                #09090b;
+        }
+
+        body.dark-mode .app-layout,
+        body.dark-mode .auth-screen {
+            background: transparent;
+        }
+
+        body.dark-mode .card,
+        body.dark-mode .panel,
+        body.dark-mode .auth-card,
+        body.dark-mode .auth-form {
+            border-color: rgba(255, 255, 255, 0.10);
+            background: rgba(28, 28, 30, 0.82);
+        }
+
+        body.dark-mode .card:first-child,
+        body.dark-mode .hero-panel,
+        body.dark-mode .loan-benefits {
+            background: linear-gradient(135deg, #1c1c1e, #343438);
+        }
+
+        body.dark-mode input,
+        body.dark-mode select {
+            border-color: #48484a;
+            color: var(--text);
+        }
+
+        body.dark-mode input::placeholder {
+            color: #8e8e93;
+        }
+
+        body.dark-mode .secondary-button,
+        body.dark-mode code {
+            color: #f5f5f7;
+            background: #3a3a3c;
+        }
+
+        body.dark-mode .auth-screen::before,
+        body.dark-mode .auth-screen::after {
+            border-color: rgba(255, 255, 255, 0.10);
+        }
+
+        .settings-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 19px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .settings-row:last-child {
+            border-bottom: 0;
+        }
+
+        .settings-copy strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .settings-copy span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .switch {
+            position: relative;
+            flex: 0 0 auto;
+            width: 52px;
+            height: 30px;
+        }
+
+        .switch input {
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            border-radius: 999px;
+            background: #d2d2d7;
+            cursor: pointer;
+            transition: background 180ms ease;
+        }
+
+        .slider::before {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            left: 3px;
+            top: 3px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.20);
+            content: "";
+            transition: transform 180ms ease;
+        }
+
+        .switch input:checked + .slider {
+            background: #30d158;
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(22px);
+        }
+
+        .settings-select {
+            width: auto;
+            min-width: 145px;
+            padding: 10px 30px 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+        }
+
+        .settings-badge {
+            padding: 7px 10px;
+            border-radius: 999px;
+            color: var(--success);
+            background: #e9f8ef;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        body.dark-mode .settings-badge {
+            color: #72e0b0;
+            background: rgba(48, 209, 88, 0.14);
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .legal-card {
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+        }
+
+        .legal-card h3 {
+            margin: 0 0 10px;
+            font-size: 1rem;
+        }
+
+        .legal-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.65;
+        }
+
+        .legal-notice {
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            border-left: 3px solid var(--primary);
+            border-radius: 8px;
+            color: var(--muted);
+            background: rgba(36, 87, 214, 0.07);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .cookie-banner {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            left: 24px;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 880px;
+            margin: auto;
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+            backdrop-filter: blur(20px);
+        }
+
+        .cookie-banner p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .cookie-actions {
+            display: flex;
+            flex: 0 0 auto;
+            gap: 8px;
+        }
+
+        .cookie-actions button {
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .cookie-accept {
+            color: white;
+            background: #111111;
+        }
+
+        .cookie-settings {
+            color: var(--text);
+            background: #f0f0f2;
+        }
+
+        .ai-disclosure {
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.48);
+            backdrop-filter: blur(12px);
+        }
+
+        .ai-disclosure.hidden {
+            display: none;
+        }
+
+        .ai-disclosure-card {
+            width: min(560px, 100%);
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.78);
+            border-radius: 26px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
+            text-align: center;
+        }
+
+        .ai-disclosure-icon {
+            display: grid;
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            place-items: center;
+            border-radius: 18px;
+            color: white;
+            background: linear-gradient(135deg, #5b7cff, #8f6bff);
+            box-shadow: 0 12px 25px rgba(91, 124, 255, 0.28);
+            font-size: 1.45rem;
+        }
+
+        .ai-disclosure-card h2 {
+            margin: 0 0 12px;
+            color: #1d1d1f;
+            font-size: 1.55rem;
+            letter-spacing: -0.04em;
+        }
+
+        .ai-intro-label {
+            margin: 0 0 10px;
+            color: #7456d8;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .ai-disclosure-card p {
+            margin: 0;
+            color: #6e6e73;
+            line-height: 1.65;
+        }
+
+        .ai-disclosure-card strong {
+            color: #1d1d1f;
+        }
+
+        .disclosure-button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 14px 18px;
+            border-radius: 999px;
+            color: #ffffff;
+            background: #111111;
+            font-weight: 700;
+        }
+
+        body.dark-mode .ai-disclosure-card {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(28, 28, 30, 0.96);
+        }
+
+        body.dark-mode .ai-disclosure-card h2,
+        body.dark-mode .ai-disclosure-card strong {
+            color: #f5f5f7;
+        }
+
+        body.dark-mode .ai-disclosure-card p {
+            color: #a1a1a6;
+        }
+
+        .ai-disclosure {
+            overflow: hidden;
+            place-items: stretch;
+            padding: 0;
+            background: #050507;
+            backdrop-filter: none;
+        }
+
+        .intro-arrival {
+            position: fixed;
+            inset: 0;
+            z-index: 90;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at center, rgba(85, 255, 180, .16), transparent 9rem),
+                #030506;
+            pointer-events: none;
+            animation: arrival-fade 900ms 3.15s ease forwards;
+        }
+
+        .intro-arrival.hidden {
+            display: none;
+        }
+
+        .arrival-vortex {
+            position: absolute;
+            width: min(42vw, 420px);
+            height: min(42vw, 420px);
+            border: 5px solid #72f2af;
+            border-radius: 47% 53% 58% 42%;
+            box-shadow:
+                0 0 18px #63f2aa,
+                0 0 55px rgba(57, 243, 157, .78),
+                inset 0 0 45px rgba(68, 255, 173, .72);
+            transform: scale(.05) rotate(-25deg);
+            animation: arrival-vortex 3.2s cubic-bezier(.62, .02, .22, 1) forwards;
+        }
+
+        .arrival-vortex::before,
+        .arrival-vortex::after {
+            position: absolute;
+            inset: 18px;
+            border: 3px solid rgba(169, 255, 211, .82);
+            border-radius: 55% 45% 41% 59%;
+            content: "";
+        }
+
+        .arrival-vortex::after {
+            inset: 38px;
+            border-color: rgba(31, 185, 117, .92);
+            background: radial-gradient(circle, rgba(3, 49, 38, .8), #020908);
+            box-shadow: inset 0 0 40px rgba(99, 255, 176, .85);
+        }
+
+        @keyframes arrival-vortex {
+            0% {
+                opacity: 0;
+                transform: scale(.05) rotate(-25deg);
+            }
+            18% {
+                opacity: 1;
+                transform: scale(1.12) rotate(12deg);
+            }
+            66% {
+                opacity: 1;
+                transform: scale(1) rotate(175deg);
+            }
+            100% {
+                opacity: .15;
+                transform: scale(16) rotate(520deg);
+            }
+        }
+
+        .arrival-core {
+            position: relative;
+            z-index: 1;
+            color: #dffff0;
+            opacity: 0;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 700;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            text-shadow: 0 0 18px #5cffaf;
+            animation: arrival-core 2.2s 0.55s ease forwards;
+        }
+
+        @keyframes arrival-core {
+            0%, 100% { opacity: 0; transform: scale(.7); }
+            35%, 75% { opacity: 1; transform: scale(1); }
+        }
+
+        .arrival-ray {
+            position: absolute;
+            width: 2px;
+            height: 45vh;
+            background: linear-gradient(transparent, #83ffc0, transparent);
+            opacity: 0;
+            transform-origin: center;
+            animation: arrival-ray 1.4s 1.25s ease-out forwards;
+        }
+
+        .arrival-ray:nth-of-type(2) { transform: rotate(18deg); animation-delay: 1.35s; }
+        .arrival-ray:nth-of-type(3) { transform: rotate(74deg); animation-delay: 1.45s; }
+        .arrival-ray:nth-of-type(4) { transform: rotate(132deg); animation-delay: 1.55s; }
+        .arrival-ray:nth-of-type(5) { transform: rotate(168deg); animation-delay: 1.65s; }
+
+        @keyframes arrival-ray {
+            0% { opacity: 0; height: 0; }
+            35% { opacity: .9; }
+            100% { opacity: 0; height: 100vh; }
+        }
+
+        @keyframes arrival-fade {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .ai-disclosure.arriving .ai-disclosure-card,
+        .ai-disclosure.arriving .intro-galaxy,
+        .ai-disclosure.arriving .intro-orbit {
+            opacity: 0;
+            transform: scale(.82);
+            animation: intro-materialize 1.2s 2.7s cubic-bezier(.2, .8, .2, 1) forwards;
+        }
+
+        @keyframes intro-materialize {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .ai-disclosure::before {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 42%, rgba(78, 98, 255, 0.22), transparent 28rem),
+                linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.04) 50%, transparent 80%);
+            content: "";
+            pointer-events: none;
+        }
+
+        .intro-noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.17;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        #introCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.72;
+        }
+
+        .intro-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: min(70vw, 760px);
+            height: min(70vw, 760px);
+            border: 1px solid rgba(137, 151, 255, 0.18);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotate(-18deg) scaleY(0.34);
+            box-shadow: 0 0 70px rgba(84, 101, 255, 0.12);
+            animation: intro-orbit 16s linear infinite;
+            pointer-events: none;
+        }
+
+        .intro-orbit::before,
+        .intro-orbit::after {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #a8b2ff;
+            box-shadow: 0 0 24px 7px rgba(119, 137, 255, 0.8);
+            content: "";
+        }
+
+        .intro-orbit::before {
+            top: 8%;
+            left: 20%;
+        }
+
+        .intro-orbit::after {
+            right: 14%;
+            bottom: 16%;
+            background: #6be8c0;
+            box-shadow: 0 0 24px 7px rgba(73, 218, 174, 0.75);
+        }
+
+        .intro-galaxy {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: min(42vw, 620px);
+            overflow: hidden;
+            opacity: 0.92;
+            pointer-events: none;
+        }
+
+        .intro-galaxy::before {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 55% 50%, rgba(84, 105, 255, 0.18), transparent 18rem),
+                linear-gradient(90deg, #050507 0%, transparent 42%);
+            content: "";
+        }
+
+        .galaxy-stars {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.8) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(111,226,255,.55) 0 1px, transparent 1.5px);
+            background-position: 10px 30px, 70px 90px;
+            background-size: 120px 120px, 180px 180px;
+            opacity: 0.42;
+            animation: star-drift 18s linear infinite;
+        }
+
+        @keyframes star-drift {
+            to {
+                background-position: 130px 150px, -110px -90px;
+            }
+        }
+
+        .floating-logo {
+            position: absolute;
+            display: grid;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 14px;
+            color: #ffffff;
+            background: rgba(255,255,255,.09);
+            box-shadow: 0 0 24px rgba(108, 134, 255, .24);
+            backdrop-filter: blur(10px);
+            font-size: 1.05rem;
+            animation: logo-float 7s ease-in-out infinite;
+        }
+
+        .floating-logo.github {
+            top: 16%;
+            right: 22%;
+            animation-delay: -1.5s;
+        }
+
+        .floating-logo.ai {
+            top: 35%;
+            right: 5%;
+            color: #b6a6ff;
+            animation-delay: -4s;
+        }
+
+        .floating-logo.api {
+            right: 31%;
+            bottom: 22%;
+            color: #74e9c2;
+            animation-delay: -2.5s;
+        }
+
+        .floating-logo.bank {
+            right: 9%;
+            bottom: 14%;
+            color: #9db1ff;
+            animation-delay: -5s;
+        }
+
+        @keyframes logo-float {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) rotate(-5deg);
+            }
+            50% {
+                transform: translate3d(-15px, -24px, 0) rotate(8deg);
+            }
+        }
+
+        .portal-easter-egg {
+            position: absolute;
+            top: 50%;
+            right: 13%;
+            width: 220px;
+            height: 220px;
+            border: 5px solid #75f2b2;
+            border-radius: 48% 52% 44% 56%;
+            opacity: 0;
+            transform: translate(50%, -50%) scale(0.25) rotate(-18deg);
+            filter: blur(.1px) drop-shadow(0 0 12px #45e99f) drop-shadow(0 0 35px rgba(69, 233, 159, .75));
+            pointer-events: none;
+        }
+
+        .portal-easter-egg::before,
+        .portal-easter-egg::after {
+            position: absolute;
+            inset: 12px;
+            border: 3px solid rgba(151, 255, 205, .86);
+            border-radius: 54% 46% 57% 43%;
+            content: "";
+        }
+
+        .portal-easter-egg::after {
+            inset: 27px;
+            border-color: rgba(36, 173, 113, .9);
+            background: radial-gradient(circle, rgba(21, 104, 77, .62), rgba(6, 37, 36, .8));
+            box-shadow: inset 0 0 32px rgba(76, 255, 175, .55);
+        }
+
+        .portal-easter-egg.active {
+            animation: portal-open 4.8s cubic-bezier(.2,.8,.2,1) forwards;
+        }
+
+        @keyframes portal-open {
+            0% {
+                opacity: 0;
+                transform: translate(50%, -50%) scale(.2) rotate(-18deg);
+            }
+            16%, 78% {
+                opacity: .94;
+                transform: translate(50%, -50%) scale(1) rotate(8deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(50%, -50%) scale(.25) rotate(28deg);
+            }
+        }
+
+        .portal-spark {
+            position: absolute;
+            width: 5px;
+            height: 22px;
+            border-radius: 999px;
+            background: #b5ffd3;
+            box-shadow: 0 0 12px #65f5ac;
+            opacity: 0;
+            transform-origin: center bottom;
+        }
+
+        .portal-easter-egg.active .portal-spark {
+            animation: portal-spark 1s ease-out forwards;
+        }
+
+        .portal-spark:nth-child(1) { top: -20px; left: 34%; transform: rotate(-35deg); }
+        .portal-spark:nth-child(2) { top: 22%; right: -18px; transform: rotate(65deg); animation-delay: .15s !important; }
+        .portal-spark:nth-child(3) { bottom: -22px; left: 58%; transform: rotate(165deg); animation-delay: .28s !important; }
+        .portal-spark:nth-child(4) { top: 58%; left: -16px; transform: rotate(-75deg); animation-delay: .4s !important; }
+
+        @keyframes portal-spark {
+            0% { opacity: 0; transform: scale(.2) translateY(0) rotate(0); }
+            35% { opacity: 1; }
+            100% { opacity: 0; transform: scale(1.2) translateY(-32px) rotate(25deg); }
+        }
+
+        @keyframes intro-orbit {
+            to {
+                transform: translate(-50%, -50%) rotate(342deg) scaleY(0.34);
+            }
+        }
+
+        .ai-disclosure-card {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            width: min(1060px, calc(100% - 48px));
+            min-height: min(720px, calc(100vh - 48px));
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 64px 40px;
+            overflow: hidden;
+            border: 0;
+            border-radius: 0;
+            color: #ffffff;
+            background: transparent;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        .ai-disclosure-icon {
+            width: 76px;
+            height: 76px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 25px;
+            background: linear-gradient(135deg, #6277ff, #8d62ef);
+            box-shadow: 0 0 60px rgba(96, 116, 255, 0.45), inset 0 1px 0 rgba(255,255,255,.4);
+            animation: intro-float 4s ease-in-out infinite;
+        }
+
+        @keyframes intro-float {
+            50% {
+                transform: translateY(-8px) rotate(4deg);
+            }
+        }
+
+        .ai-disclosure-card .ai-intro-label {
+            color: #9daaff;
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+        }
+
+        .ai-disclosure-card h2 {
+            max-width: 850px;
+            margin: 14px 0 20px;
+            color: #ffffff;
+            font-size: clamp(3.3rem, 9vw, 7.8rem);
+            font-weight: 700;
+            letter-spacing: -0.085em;
+            line-height: 0.94;
+            text-wrap: balance;
+        }
+
+        .ai-disclosure-card > p:not(.ai-intro-label) {
+            max-width: 670px;
+            color: #a8a8b5;
+            font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+            line-height: 1.65;
+        }
+
+        .ai-disclosure-card > p strong {
+            color: #f5f5f7;
+        }
+
+        .intro-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 9px;
+            margin: 27px 0 4px;
+        }
+
+        .intro-feature {
+            padding: 9px 13px;
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 999px;
+            color: #c8c9d4;
+            background: rgba(255, 255, 255, 0.06);
+            font-size: 0.78rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .intro-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 34px;
+        }
+
+        .intro-actions button {
+            min-width: 180px;
+            padding: 15px 23px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            font-weight: 750;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        .intro-actions button:hover {
+            transform: translateY(-3px);
+        }
+
+        .intro-primary {
+            color: #111111;
+            background: #ffffff;
+            box-shadow: 0 14px 35px rgba(255, 255, 255, 0.16);
+        }
+
+        .intro-secondary {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .intro-footer {
+            position: absolute;
+            right: 32px;
+            bottom: 22px;
+            left: 32px;
+            display: flex;
+            justify-content: space-between;
+            color: #686875;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 680px) {
+            .ai-disclosure-card {
+                width: calc(100% - 20px);
+                min-height: calc(100vh - 20px);
+                padding: 40px 20px;
+            }
+
+            .ai-disclosure-card h2 {
+                font-size: clamp(2.8rem, 16vw, 5rem);
+            }
+
+            .intro-footer {
+                right: 18px;
+                bottom: 16px;
+                left: 18px;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .intro-galaxy {
+                width: 100%;
+                opacity: .38;
+            }
+
+            .floating-logo {
+                transform: scale(.78);
+            }
+        }
+
+        .cookie-preferences {
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            display: none;
+            place-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(8px);
+        }
+
+        .cookie-preferences.open {
+            display: grid;
+        }
+
+        .cookie-dialog {
+            width: min(520px, 100%);
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--surface);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+        }
+
+        .cookie-dialog h2 {
+            margin-top: 0;
+        }
+
+        .cookie-option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cookie-option span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .cookie-dialog-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .cookie-dialog-actions button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 999px;
+            font-weight: 700;
+        }
+
+        body.dark-mode .cookie-banner {
+            background: rgba(28, 28, 30, 0.96);
+        }
+
+        @media (max-width: 760px) {
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cookie-banner {
+                right: 12px;
+                bottom: 12px;
+                left: 12px;
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .cookie-actions {
+                width: 100%;
+            }
+
+            .cookie-actions button {
+                flex: 1;
+            }
         }
     </style>
 </head>
@@ -394,7 +2256,20 @@
 <section id="authScreen" class="screen auth-screen">
     <div class="auth-card">
         <div class="auth-intro">
-            <div class="brand"><span class="brand-mark">◆</span> PibbleBank</div>
+            <div class="brand">
+                <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="PibbleBank Logo">
+                    <defs>
+                        <linearGradient id="logoGradientAuth" x1="0" x2="1" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#9bb8ff"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="24" cy="24" r="21" fill="#2f5bea"/>
+                    <circle class="logo-orbit" cx="24" cy="24" r="16" fill="none" stroke="rgba(255,255,255,.32)" stroke-width="1.5" stroke-dasharray="2 4"/>
+                    <path d="M15 30 22.1 14h4.2L33 30h-4l-1.35-3.4h-7.6L18.7 30H15Zm6.3-6.6h5l-2.5-6.2-2.5 6.2Z" fill="url(#logoGradientAuth)"/>
+                </svg>
+                <span class="brand-name"><strong>PibbleBank</strong><small>Private finance</small></span>
+            </div>
             <h1>Deine Finanzen. Einfach im Blick.</h1>
             <p>Eine klare Übersicht für dein Konto, deine Überweisungen und deine Transaktionen.</p>
         </div>
@@ -447,15 +2322,37 @@
 <section id="appScreen" class="screen app-screen">
     <div class="app-layout">
         <aside class="sidebar">
-            <div class="brand"><span class="brand-mark">◆</span> PibbleBank</div>
+            <div class="brand">
+                <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="PibbleBank Logo">
+                    <defs>
+                        <linearGradient id="logoGradientApp" x1="0" x2="1" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#9bb8ff"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="24" cy="24" r="21" fill="#2f5bea"/>
+                    <circle class="logo-orbit" cx="24" cy="24" r="16" fill="none" stroke="rgba(255,255,255,.32)" stroke-width="1.5" stroke-dasharray="2 4"/>
+                    <path d="M15 30 22.1 14h4.2L33 30h-4l-1.35-3.4h-7.6L18.7 30H15Zm6.3-6.6h5l-2.5-6.2-2.5 6.2Z" fill="url(#logoGradientApp)"/>
+                </svg>
+                <span class="brand-name"><strong>PibbleBank</strong><small>Private finance</small></span>
+            </div>
             <nav class="nav" aria-label="Hauptmenü">
                 <button class="nav-button active" onclick="showPage('overview', this)">Übersicht</button>
                 <button class="nav-button" onclick="showPage('transactions', this)">Transaktionen</button>
                 <button class="nav-button" onclick="showPage('transfer', this)">Überweisen</button>
+                <button class="nav-button" onclick="showPage('cash', this)">Einzahlen / Auszahlen</button>
+                <button class="nav-button" onclick="showPage('loan', this)">Kredit aufnehmen</button>
                 <button class="nav-button" onclick="showPage('account', this)">Mein Konto</button>
                 <button class="nav-button" onclick="showPage('forgotPassword', this)">Passwort ändern</button>
+                <button class="nav-button" onclick="showPage('settings', this)">Einstellungen</button>
+                <button class="nav-button" onclick="toggleAiChat()">✦ PibbAI</button>
+                <button class="nav-button" onclick="showPage('legal', this)">Rechtliches</button>
             </nav>
             <button class="logout-button" onclick="logout()">Abmelden</button>
+            <div class="sidebar-footer">
+                <strong>Private banking, neu gedacht.</strong>
+                Deine Oberfläche. Deine Kontrolle.
+            </div>
         </aside>
 
         <main class="content">
@@ -463,23 +2360,43 @@
                 <div>
                     <h1 id="pageTitle">Guten Tag!</h1>
                     <p>Hier ist deine aktuelle Finanzübersicht.</p>
+                    <div id="liveClock" class="live-clock"></div>
                 </div>
                 <div class="avatar">MM</div>
             </div>
 
             <section id="overview" class="page active">
+                <div class="legal-notice homepage-disclaimer">
+                    <strong>Transparenz:</strong> Die Oberfläche dieser Website wurde mit Unterstützung
+                    künstlicher Intelligenz erstellt. Das Backend und die APIs wurden von mir selbst
+                    entwickelt, geprüft und an diese Anwendung angebunden.
+                </div>
+                <div class="hero-panel">
+                    <div>
+                        <h2>Mehr Möglichkeiten für deine Ziele.</h2>
+                        <p>Verwalte dein Konto, plane Überweisungen und prüfe deine Finanzierung an einem Ort.</p>
+                    </div>
+                    <div class="hero-stat">
+                        <span>Finanzstatus</span>
+                        <strong>Alles im Überblick</strong>
+                    </div>
+                </div>
                 <div class="cards">
                     <div class="card">
                         <div class="card-label">Kontostand</div>
-                        <div class="balance">0,00 €</div>
+                        <div id="balanceValue" class="balance">0,00 €</div>
+                        <form id="balanceForm" action="/balance" method="POST">
+                            <input id="balanceUser" name="user" type="hidden">
+                            <button class="secondary-button" type="submit">Kontostand laden</button>
+                        </form>
                     </div>
                     <div class="card">
                         <div class="card-label">Einnahmen diesen Monat</div>
-                        <div class="balance positive">+0,00 €</div>
+                        <div class="balance positive">+5721,83 €</div>
                     </div>
                     <div class="card">
                         <div class="card-label">Ausgaben diesen Monat</div>
-                        <div class="balance negative">-0,00 €</div>
+                        <div class="balance negative">-2012,35 €</div>
                     </div>
                 </div>
                 <div class="panel">
@@ -523,6 +2440,94 @@
                 </div>
             </section>
 
+            <section id="cash" class="page">
+                <div class="loan-grid">
+                    <div class="loan-benefits">
+                        <h3>Geld bewegen</h3>
+                        <p>Verwalte Einzahlungen und Auszahlungen über vorbereitete Formulare.</p>
+                        <ul>
+                            <li>Einzahlung auf dein Konto</li>
+                            <li>Auszahlung von deinem Konto</li>
+                            <li>Automatische Benutzerzuordnung</li>
+                            <li>Java-Endpunkte später frei definierbar</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <h2>Einzahlen</h2>
+                        <form id="depositForm" action="/deposit" method="POST">
+                            <input id="depositUser" name="user" type="hidden">
+                            <label for="depositAmount">Einzahlungsbetrag</label>
+                            <input id="depositAmount" name="amount" type="number" min="0.01" step="0.01"
+                                   placeholder="z. B. 250,00" required>
+                            <label for="depositReason">Verwendungszweck</label>
+                            <input id="depositReason" name="reason" type="text"
+                                   placeholder="Optional">
+                            <button class="primary-button" type="submit">Geld einzahlen</button>
+                        </form>
+                        <div id="depositResult" class="loan-result" aria-live="polite"></div>
+
+                        <h2 style="margin-top: 34px;">Auszahlen</h2>
+                        <form id="withdrawForm" action="/withdraw" method="POST">
+                            <input id="withdrawUser" name="user" type="hidden">
+                            <label for="withdrawAmount">Auszahlungsbetrag</label>
+                            <input id="withdrawAmount" name="amount" type="number" min="0.01" step="0.01"
+                                   placeholder="z. B. 100,00" required>
+                            <label for="withdrawReason">Verwendungszweck</label>
+                            <input id="withdrawReason" name="reason" type="text"
+                                   placeholder="Optional">
+                            <button class="primary-button" type="submit">Geld auszahlen</button>
+                        </form>
+                        <div id="withdrawResult" class="loan-result" aria-live="polite"></div>
+                        <p class="notice">
+                            Vorbereitet für <code>POST /deposit</code> und <code>POST /withdraw</code>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="loan" class="page">
+                <div class="loan-grid">
+                    <div class="loan-benefits">
+                        <h3>Dein Wunschkredit</h3>
+                        <p>Stelle unverbindlich deine Anfrage. Die Entscheidung und Berechnung verbindest du später mit deinem Backend.</p>
+                        <ul>
+                            <li>Flexible Kreditsumme</li>
+                            <li>Individuelle Laufzeit</li>
+                            <li>Transparente Anfrage</li>
+                            <li>Keine echte Auszahlung im Frontend</li>
+                        </ul>
+                    </div>
+                    <div class="panel">
+                        <h2>Kredit anfragen</h2>
+                        <form id="loanForm" class="loan-form" action="/loan/apply" method="POST">
+                            <input id="loanUser" name="user" type="hidden">
+                            <div class="form-grid">
+                                <div>
+                                    <label for="loanAmount">Kreditsumme</label>
+                                    <input id="loanAmount" name="amount" type="number" min="1" step="0.01" placeholder="z. B. 5000" required>
+                                </div>
+                                <div>
+                                    <label for="loanDuration">Laufzeit in Monaten</label>
+                                    <select id="loanDuration" name="duration" required>
+                                        <option value="">Laufzeit wählen</option>
+                                        <option value="12">12 Monate</option>
+                                        <option value="24">24 Monate</option>
+                                        <option value="36">36 Monate</option>
+                                        <option value="48">48 Monate</option>
+                                        <option value="60">60 Monate</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label for="loanPurpose">Verwendungszweck</label>
+                            <input id="loanPurpose" name="purpose" type="text" placeholder="z. B. Auto, Ausbildung oder Renovierung" required>
+                            <button class="primary-button" type="submit">Kreditanfrage senden</button>
+                        </form>
+                        <div id="loanResult" class="loan-result" aria-live="polite"></div>
+                        <p class="notice">Backend-Pfad: <code>POST /loan/apply</code>. Alle Formularnamen sind bereits vorbereitet.</p>
+                    </div>
+                </div>
+            </section>
+
             <section id="account" class="page">
                 <div class="panel">
                     <h2>Mein Konto</h2>
@@ -552,8 +2557,223 @@
                     </form>
                 </div>
             </section>
+
+            <section id="settings" class="page">
+                <div class="panel">
+                    <h2>Einstellungen</h2>
+                    <p class="notice">Passe deine Banking-Oberfläche so an, wie sie für dich am besten funktioniert.</p>
+                    <div class="settings-grid">
+                        <div class="settings-row">
+                            <div class="settings-copy">
+                                <strong>Dark Mode</strong>
+                                <span>Angenehme Darstellung bei wenig Licht.</span>
+                            </div>
+                            <label class="switch">
+                                <input id="darkModeToggle" type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-copy">
+                                <strong>Darstellung</strong>
+                                <span>Wähle deine bevorzugte Akzentfarbe.</span>
+                            </div>
+                            <select id="accentSelect" class="settings-select">
+                                <option value="blue">Ocean Blue</option>
+                                <option value="green">Mint Green</option>
+                                <option value="violet">Soft Violet</option>
+                            </select>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-copy">
+                                <strong>Benachrichtigungen</strong>
+                                <span>Hinweise zu neuen Aktivitäten anzeigen.</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-copy">
+                                <strong>Sicherheitsstatus</strong>
+                                <span>Dein Konto ist für die Demo-Oberfläche bereit.</span>
+                            </div>
+                            <span class="settings-badge">Geschützt</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="legal" class="page">
+                <div class="panel">
+                    <h2>Rechtliches</h2>
+                    <div class="legal-notice">
+                        <strong>Demo-Hinweis:</strong> Diese Texte sind Platzhalter für dein Lernprojekt und keine fertigen Rechtstexte.
+                        Vor einer Veröffentlichung müssen sie mit deinen echten Daten und rechtlich geprüften Inhalten ersetzt werden.
+                    </div>
+                    <div class="legal-grid">
+                        <article class="legal-card">
+                            <h3>Impressum</h3>
+                            <p><strong>PibbleBank Demo</strong><br>
+                                Betreiber: [Dein Name]<br>
+                                Anschrift: [Deine ladungsfähige Anschrift]<br>
+                                E-Mail: [Deine Kontakt-E-Mail]<br>
+                                Verantwortlich für den Inhalt: [Name]</p>
+                        </article>
+                        <article class="legal-card">
+                            <h3>Datenschutzerklärung</h3>
+                            <p>Hier erklärst du, welche personenbezogenen Daten verarbeitet werden, warum sie benötigt werden,
+                                wie lange sie gespeichert werden und welche Rechte Nutzer haben.</p>
+                        </article>
+                        <article class="legal-card">
+                            <h3>Allgemeine Geschäftsbedingungen</h3>
+                            <p>Hier gehören die Regeln zur Nutzung deines Dienstes, zu Konten, Transaktionen, Kreditanfragen,
+                                Verfügbarkeit, Haftung und Beendigung des Nutzerkontos hinein.</p>
+                        </article>
+                        <article class="legal-card">
+                            <h3>Cookies &amp; localStorage</h3>
+                            <p>Diese Demo speichert Einstellungen wie Dark Mode und Akzentfarbe lokal im Browser.
+                                Prüfe vor dem Live-Betrieb, ob dafür ein Hinweis oder eine Einwilligung erforderlich ist.</p>
+                        </article>
+                        <article class="legal-card">
+                            <h3>Haftungsausschluss</h3>
+                            <p>PibbAI liefert keine Finanz-, Rechts- oder Anlageberatung. Anzeigen und Demo-Funktionen
+                                ersetzen keine verbindliche Prüfung oder echte Bankdienstleistung.</p>
+                        </article>
+                        <article class="legal-card">
+                            <h3>Barrierefreiheit</h3>
+                            <p>Formulare verwenden Labels und Buttons. Für einen Live-Betrieb solltest du zusätzlich
+                                Tastaturbedienung, Kontraste, Screenreader und eine Barrierefreiheitserklärung prüfen.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
+</section>
+
+<aside id="cookieBanner" class="cookie-banner" aria-label="Cookie-Hinweis">
+    <p>Diese Demo verwendet nur technisch notwendiges <code>localStorage</code> für deine Oberflächen-Einstellungen.
+        Es werden hier keine Marketing-Cookies gesetzt.</p>
+    <div class="cookie-actions">
+        <button class="cookie-settings" type="button" onclick="showPageFromCookie()">Details</button>
+        <button class="cookie-accept" type="button" onclick="acceptCookies()">Verstanden</button>
+    </div>
+</aside>
+
+<section id="cookiePreferences" class="cookie-preferences" aria-label="Cookie-Einstellungen">
+    <div class="cookie-dialog">
+        <h2>Cookie-Einstellungen</h2>
+        <p class="notice">Wähle, welche Kategorien diese Demo speichern darf.</p>
+        <div class="cookie-option">
+            <div><strong>Notwendig</strong><span>Für Grundfunktionen und Sicherheit immer aktiv.</span></div>
+            <span class="settings-badge">Immer aktiv</span>
+        </div>
+        <div class="cookie-option">
+            <div><strong>Präferenzen</strong><span>Zum Speichern von Dark Mode und Akzentfarbe.</span></div>
+            <label class="switch">
+                <input id="preferenceCookies" type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="cookie-option">
+            <div><strong>Analyse</strong><span>In dieser Demo standardmäßig deaktiviert.</span></div>
+            <label class="switch">
+                <input id="analyticsCookies" type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="cookie-dialog-actions">
+            <button class="cookie-settings" type="button" onclick="closeCookiePreferences()">Abbrechen</button>
+            <button class="cookie-accept" type="button" onclick="saveCookiePreferences()">Auswahl speichern</button>
+        </div>
+    </div>
+</section>
+
+<section id="aiDisclosure" class="ai-disclosure arriving" role="dialog" aria-modal="true"
+         aria-labelledby="aiDisclosureTitle">
+    <canvas id="introCanvas" aria-hidden="true"></canvas>
+    <div class="intro-noise" aria-hidden="true"></div>
+    <div class="intro-orbit" aria-hidden="true"></div>
+    <div class="intro-galaxy" aria-hidden="true">
+        <div class="galaxy-stars"></div>
+        <div class="floating-logo github" title="GitHub">◉</div>
+        <div class="floating-logo ai" title="PibbAI">✦</div>
+        <div class="floating-logo api" title="API">&lt;/&gt;</div>
+        <div class="floating-logo bank" title="PibbleBank">₿</div>
+        <div id="portalEasterEgg" class="portal-easter-egg">
+            <span class="portal-spark"></span>
+            <span class="portal-spark"></span>
+            <span class="portal-spark"></span>
+            <span class="portal-spark"></span>
+        </div>
+    </div>
+    <div class="ai-disclosure-card">
+        <div class="ai-disclosure-icon">✦</div>
+        <p class="ai-intro-label">PIBBAI PRESENTS</p>
+        <h2 id="aiDisclosureTitle">Banking, neu gedacht.</h2>
+        <p>
+            Willkommen bei <strong>PibbleBank</strong> — einer persönlichen AI-assisted Banking
+            Experience. Klarer. Ruhiger. Für deine Finanzen gebaut.
+        </p>
+        <div class="intro-features">
+            <span class="intro-feature">✦ PibbAI inside</span>
+            <span class="intro-feature">⌁ Private finance</span>
+            <span class="intro-feature">◌ Built as a learning project</span>
+        </div>
+        <div class="intro-actions">
+            <button class="intro-primary" type="button" onclick="enterBanking('login')">
+                Einloggen
+            </button>
+            <button class="intro-secondary" type="button" onclick="enterBanking('register')">
+                Konto erstellen
+            </button>
+        </div>
+        <div class="intro-footer">
+            <span>FRONTEND · AI-ASSISTED DESIGN</span>
+            <span>BACKEND · HANDCRAFTED APIs</span>
+        </div>
+    </div>
+</section>
+
+<section id="introArrival" class="intro-arrival" aria-hidden="true">
+    <div class="arrival-vortex"></div>
+    <div class="arrival-core">PibbAI gateway</div>
+    <span class="arrival-ray"></span>
+    <span class="arrival-ray"></span>
+    <span class="arrival-ray"></span>
+    <span class="arrival-ray"></span>
+</section>
+
+<button class="ai-launcher ripple" type="button" onclick="toggleAiChat()" aria-label="PibbAI öffnen">
+    <span class="ai-launcher-logo">✦</span>
+    <span>PibbAI</span>
+</button>
+
+<section id="aiWindow" class="ai-window" aria-label="PibbAI Chat">
+    <header class="ai-header">
+        <div class="ai-title">
+            <span class="ai-launcher-logo">✦</span>
+            <div>
+                <strong>PibbAI</strong>
+                <span>Dein Banking-Assistent</span>
+            </div>
+        </div>
+        <button class="ai-close" type="button" onclick="toggleAiChat()" aria-label="Chat schließen">×</button>
+    </header>
+    <div id="aiMessages" class="ai-messages" aria-live="polite">
+        <div class="ai-message bot">Hallo! Ich bin PibbAI. Ich kann dir erklären, wo du Funktionen findest und wie deine Banking-App funktioniert.</div>
+    </div>
+    <div class="ai-suggestions">
+        <button class="ai-suggestion" type="button" onclick="askPibbAI('Wo sehe ich meinen Kontostand?')">Kontostand</button>
+        <button class="ai-suggestion" type="button" onclick="askPibbAI('Wie funktioniert eine Überweisung?')">Überweisung</button>
+        <button class="ai-suggestion" type="button" onclick="askPibbAI('Wo kann ich einen Kredit anfragen?')">Kredit</button>
+    </div>
+    <form id="aiForm" class="ai-form">
+        <input id="aiInput" type="text" placeholder="Frag PibbAI etwas ..." autocomplete="off" required>
+        <button class="ai-send" type="submit" aria-label="Nachricht senden">↑</button>
+    </form>
 </section>
 
 <script>
@@ -587,7 +2807,11 @@
             pageId === "overview" ? "Guten Tag!" :
             pageId === "transactions" ? "Transaktionen" :
             pageId === "transfer" ? "Überweisen" :
-            pageId === "account" ? "Mein Konto" : "Passwort ändern";
+            pageId === "cash" ? "Einzahlen / Auszahlen" :
+            pageId === "loan" ? "Kredit aufnehmen" :
+            pageId === "account" ? "Mein Konto" :
+            pageId === "settings" ? "Einstellungen" :
+            pageId === "legal" ? "Rechtliches" : "Passwort ändern";
     }
 
     function showApp(username) {
@@ -595,7 +2819,86 @@
         document.getElementById("appScreen").style.display = "block";
         document.getElementById("pageTitle").textContent = "Guten Tag, " + username + "!";
         document.getElementById("accountName").value = username;
+        document.getElementById("balanceUser").value = username;
+        document.getElementById("loanUser").value = username;
+        document.getElementById("depositUser").value = username;
+        document.getElementById("withdrawUser").value = username;
+        document.querySelector(".avatar").textContent = username
+            .split(/[.\s_-]+/)
+            .filter(Boolean)
+            .slice(0, 2)
+            .map(part => part[0].toUpperCase())
+            .join("");
     }
+
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const accentSelect = document.getElementById("accentSelect");
+
+    function applySavedSettings() {
+        const darkMode = localStorage.getItem("pibble-dark-mode") === "true";
+        const accent = localStorage.getItem("pibble-accent") || "blue";
+        document.body.classList.toggle("dark-mode", darkMode);
+        darkModeToggle.checked = darkMode;
+        accentSelect.value = accent;
+        applyAccent(accent);
+    }
+
+    function applyAccent(accent) {
+        const colors = {
+            blue: "#2457d6",
+            green: "#16875d",
+            violet: "#7456d8"
+        };
+        document.documentElement.style.setProperty("--primary", colors[accent] || colors.blue);
+    }
+
+    darkModeToggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+        localStorage.setItem("pibble-dark-mode", darkModeToggle.checked);
+    });
+
+    accentSelect.addEventListener("change", () => {
+        applyAccent(accentSelect.value);
+        localStorage.setItem("pibble-accent", accentSelect.value);
+    });
+
+    applySavedSettings();
+
+    function acceptCookies() {
+        localStorage.setItem("pibble-cookie-notice", "accepted");
+        document.getElementById("cookieBanner").style.display = "none";
+    }
+
+    function openCookiePreferences() {
+        document.getElementById("cookiePreferences").classList.add("open");
+    }
+
+    function closeCookiePreferences() {
+        document.getElementById("cookiePreferences").classList.remove("open");
+    }
+
+    function saveCookiePreferences() {
+        localStorage.setItem("pibble-cookie-notice", "accepted");
+        localStorage.setItem("pibble-preference-cookies",
+            document.getElementById("preferenceCookies").checked);
+        localStorage.setItem("pibble-analytics-cookies",
+            document.getElementById("analyticsCookies").checked);
+        document.getElementById("cookieBanner").style.display = "none";
+        closeCookiePreferences();
+    }
+
+    function showPageFromCookie() {
+        openCookiePreferences();
+    }
+
+    if (localStorage.getItem("pibble-cookie-notice") === "accepted") {
+        document.getElementById("cookieBanner").style.display = "none";
+    }
+
+    document.getElementById("preferenceCookies").checked =
+        localStorage.getItem("pibble-preference-cookies") !== "false";
+    document.getElementById("analyticsCookies").checked =
+        localStorage.getItem("pibble-analytics-cookies") === "true";
 
     async function submitAuthForm(event, form, successMessage, onSuccess) {
         event.preventDefault();
@@ -664,12 +2967,310 @@
         });
     });
 
+    document.getElementById("balanceForm").addEventListener("submit", async event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const balanceValue = document.getElementById("balanceValue");
+        balanceValue.textContent = "Wird geladen...";
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form)
+            });
+
+            if (!response.ok) {
+                throw new Error("Kontostand konnte nicht geladen werden.");
+            }
+
+            const balance = Number(await response.text());
+            balanceValue.textContent = balance.toLocaleString("de-DE", {
+                style: "currency",
+                currency: "EUR"
+            });
+        } catch (error) {
+            balanceValue.textContent = error.message;
+        }
+    });
+
+    document.getElementById("loanForm").addEventListener("submit", async event => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const resultBox = document.getElementById("loanResult");
+        resultBox.classList.add("visible");
+        resultBox.textContent = "Kreditanfrage wird verarbeitet...";
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form)
+            });
+            const result = await response.text();
+
+            if (!response.ok) {
+                throw new Error(result || "Die Kreditanfrage ist fehlgeschlagen.");
+            }
+
+            resultBox.textContent = result || "Kreditanfrage erfolgreich gesendet.";
+        } catch (error) {
+            resultBox.textContent = error.message;
+        }
+    });
+
+    async function submitCashForm(event, resultId, loadingText, fallbackText) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const resultBox = document.getElementById(resultId);
+        resultBox.classList.add("visible");
+        resultBox.textContent = loadingText;
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form)
+            });
+            const result = await response.text();
+
+            if (!response.ok) {
+                throw new Error(result || "Die Anfrage ist fehlgeschlagen.");
+            }
+
+            resultBox.textContent = result || fallbackText;
+        } catch (error) {
+            resultBox.textContent = error.message;
+        }
+    }
+
+    document.getElementById("depositForm").addEventListener("submit", event => {
+        submitCashForm(
+            event,
+            "depositResult",
+            "Einzahlung wird verarbeitet...",
+            "Einzahlung erfolgreich angefragt."
+        );
+    });
+
+    document.getElementById("withdrawForm").addEventListener("submit", event => {
+        submitCashForm(
+            event,
+            "withdrawResult",
+            "Auszahlung wird verarbeitet...",
+            "Auszahlung erfolgreich angefragt."
+        );
+    });
+
     document.getElementById("forgotForm").addEventListener("submit", event => {
         const form = event.currentTarget;
         submitAuthForm(event, form, "Dein Passwort wurde erfolgreich geändert.", result => {
             return result.toLowerCase().includes("neues passwort");
         });
     });
+
+    function toggleAiChat() {
+        document.getElementById("aiWindow").classList.toggle("open");
+        if (document.getElementById("aiWindow").classList.contains("open")) {
+            document.getElementById("aiInput").focus();
+        }
+    }
+
+    function closeAiDisclosure() {
+        document.getElementById("aiDisclosure").classList.add("hidden");
+    }
+
+    function enterBanking(destination) {
+        closeAiDisclosure();
+        if (destination === "register") {
+            showRegister();
+            return;
+        }
+        showLogin();
+    }
+
+    function initializeIntroParticles() {
+        const canvas = document.getElementById("introCanvas");
+        const context = canvas.getContext("2d");
+        const intro = document.getElementById("aiDisclosure");
+        const particles = [];
+        const particleCount = window.innerWidth < 700 ? 48 : 105;
+        const pointer = { x: -1000, y: -1000 };
+
+        function resizeCanvas() {
+            const ratio = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = intro.clientWidth * ratio;
+            canvas.height = intro.clientHeight * ratio;
+            canvas.style.width = `${intro.clientWidth}px`;
+            canvas.style.height = `${intro.clientHeight}px`;
+            context.setTransform(ratio, 0, 0, ratio, 0, 0);
+        }
+
+        function createParticle() {
+            return {
+                x: Math.random() * intro.clientWidth,
+                y: Math.random() * intro.clientHeight,
+                radius: Math.random() * 1.6 + 0.3,
+                speed: Math.random() * 0.22 + 0.04,
+                drift: (Math.random() - 0.5) * 0.18,
+                alpha: Math.random() * 0.55 + 0.15
+            };
+        }
+
+        for (let index = 0; index < particleCount; index += 1) {
+            particles.push(createParticle());
+        }
+
+        function draw() {
+            const width = intro.clientWidth;
+            const height = intro.clientHeight;
+            context.clearRect(0, 0, width, height);
+
+            particles.forEach(particle => {
+                particle.y -= particle.speed;
+                particle.x += particle.drift;
+
+                if (particle.y < -10) {
+                    particle.y = height + 10;
+                    particle.x = Math.random() * width;
+                }
+                if (particle.x < -10 || particle.x > width + 10) {
+                    particle.drift *= -1;
+                }
+
+                const distance = Math.hypot(particle.x - pointer.x, particle.y - pointer.y);
+                const glow = distance < 170 ? (1 - distance / 170) * 0.7 : 0;
+                context.beginPath();
+                context.arc(particle.x, particle.y, particle.radius + glow * 2, 0, Math.PI * 2);
+                context.fillStyle = `rgba(169, 180, 255, ${Math.min(1, particle.alpha + glow)})`;
+                context.fill();
+            });
+
+            for (let first = 0; first < particles.length; first += 1) {
+                for (let second = first + 1; second < particles.length; second += 1) {
+                    const a = particles[first];
+                    const b = particles[second];
+                    const distance = Math.hypot(a.x - b.x, a.y - b.y);
+                    if (distance < 105) {
+                        context.beginPath();
+                        context.moveTo(a.x, a.y);
+                        context.lineTo(b.x, b.y);
+                        context.strokeStyle = `rgba(118, 130, 255, ${0.11 * (1 - distance / 105)})`;
+                        context.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        intro.addEventListener("pointermove", event => {
+            const bounds = canvas.getBoundingClientRect();
+            pointer.x = event.clientX - bounds.left;
+            pointer.y = event.clientY - bounds.top;
+        });
+        intro.addEventListener("pointerleave", () => {
+            pointer.x = -1000;
+            pointer.y = -1000;
+        });
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+        draw();
+    }
+
+    function startPortalEasterEgg() {
+        const portal = document.getElementById("portalEasterEgg");
+        if (!portal) {
+            return;
+        }
+
+        const openPortal = () => {
+            portal.classList.remove("active");
+            void portal.offsetWidth;
+            portal.classList.add("active");
+        };
+
+        window.setTimeout(openPortal, 4200);
+        window.setInterval(openPortal, 12500);
+    }
+
+    initializeIntroParticles();
+    startPortalEasterEgg();
+
+    function addAiMessage(text, type) {
+        const messages = document.getElementById("aiMessages");
+        const message = document.createElement("div");
+        message.className = `ai-message ${type}`;
+        message.textContent = text;
+        messages.appendChild(message);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function getDemoAiReply(question) {
+        const normalizedQuestion = question.toLowerCase();
+
+        if (normalizedQuestion.includes("kontostand")) {
+            return "Den Kontostand findest du in der Übersicht. Klicke dort auf „Kontostand laden“, sobald dein Java-Endpunkt verbunden ist.";
+        }
+        if (normalizedQuestion.includes("überweisung") || normalizedQuestion.includes("überweisen")) {
+            return "Öffne links „Überweisen“. Dort kannst du Empfänger, Betrag und Verwendungszweck eingeben.";
+        }
+        if (normalizedQuestion.includes("kredit")) {
+            return "Unter „Kredit aufnehmen“ findest du das vorbereitete Anfrageformular für Kreditsumme, Laufzeit und Verwendungszweck.";
+        }
+        if (normalizedQuestion.includes("passwort")) {
+            return "Die Passwort-Funktionen findest du unter „Passwort ändern“ oder über „Passwort vergessen?“ beim Login.";
+        }
+        if (normalizedQuestion.includes("dark") || normalizedQuestion.includes("design")) {
+            return "Unter „Einstellungen“ kannst du Dark Mode und die Akzentfarbe deiner Oberfläche ändern.";
+        }
+
+        return "Ich bin aktuell die Frontend-Demo von PibbAI. Später kannst du dieses Formular mit deinem POST-Endpunkt verbinden.";
+    }
+
+    function askPibbAI(question) {
+        const trimmedQuestion = question.trim();
+        if (!trimmedQuestion) {
+            return;
+        }
+
+        addAiMessage(trimmedQuestion, "user");
+        document.getElementById("aiInput").value = "";
+        window.setTimeout(() => addAiMessage(getDemoAiReply(trimmedQuestion), "bot"), 350);
+    }
+
+    document.getElementById("aiForm").addEventListener("submit", event => {
+        event.preventDefault();
+        askPibbAI(document.getElementById("aiInput").value);
+    });
+
+    function updateClock() {
+        const clock = document.getElementById("liveClock");
+        if (!clock) {
+            return;
+        }
+
+        clock.textContent = new Intl.DateTimeFormat("de-DE", {
+            weekday: "long",
+            day: "2-digit",
+            month: "long",
+            hour: "2-digit",
+            minute: "2-digit"
+        }).format(new Date());
+    }
+
+    document.querySelectorAll("button").forEach(button => {
+        button.classList.add("ripple");
+        button.addEventListener("click", event => {
+            const ripple = document.createElement("span");
+            const bounds = button.getBoundingClientRect();
+            ripple.className = "ripple-effect";
+            ripple.style.left = `${event.clientX - bounds.left - 6}px`;
+            ripple.style.top = `${event.clientY - bounds.top - 6}px`;
+            button.appendChild(ripple);
+            ripple.addEventListener("animationend", () => ripple.remove());
+        });
+    });
+
+    updateClock();
+    setInterval(updateClock, 30000);
 </script>
 </body>
 </html>

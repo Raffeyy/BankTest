@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 public class UserService {
     private final UserRepository userRepository;
+    DatabaseSpringboot databaseSpringboot = new DatabaseSpringboot();
 
 
     public UserService(UserRepository userRepository) {
@@ -17,6 +18,7 @@ public class UserService {
         var optionalerNutzer = userRepository.findById(username);
         DatabaseSpringboot echterNutzer = optionalerNutzer.get();
 
+
         if (optionalerNutzer.isEmpty()) {
             return "Fehlgeschlagen: Benutzername nicht gefunden!";
         } else {
@@ -24,6 +26,7 @@ public class UserService {
             if (!authPassword(username, password)) {
                 return "falsche daten";
             }
+
             return "eingeloggt";
         }
     }
@@ -51,6 +54,12 @@ public class UserService {
 
             return nutzer.get().getPasswort().equals(password);
         }
+    }
+
+    public double getBalance(String username) {
+        return userRepository.findById(username)
+                .map(DatabaseSpringboot::getBalance)
+                .orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
     }
 
 }

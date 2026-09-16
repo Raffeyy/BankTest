@@ -16,6 +16,7 @@ public class UserController {
     @Autowired
     private PasswordService passwordService;
 
+
     @PostMapping("/log")
     public String logControll(@RequestParam String user, @RequestParam String pass) {
 
@@ -36,7 +37,10 @@ public class UserController {
         return passwordService.forgotPassword(user, pass);
     }
 
-
+    @PostMapping("/balance")
+    public double currentBalance(@RequestParam String user) {
+        return userService.getBalance(user);
+    }
 
 
 }
