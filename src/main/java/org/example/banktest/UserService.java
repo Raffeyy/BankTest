@@ -32,7 +32,7 @@ public class UserService {
 
                 }
             }
-            return "ok";
+            return username;
         }
 
         public String register(String username, String password) {
@@ -43,6 +43,7 @@ public class UserService {
 
                 userRepository.save(neuerNutzer);
             }
+
             else {
 
                 userRepository.save(neuerNutzer);
