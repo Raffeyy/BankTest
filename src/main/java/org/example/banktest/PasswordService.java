@@ -33,12 +33,6 @@ public class PasswordService {
         return "Neues passwort wurde erstellt";
     }
 
-    public double setBalance(double balance) {
-        DatabaseSpringboot newBalance = new DatabaseSpringboot();
-
-        return balance;
-    }
-
 }
 
 

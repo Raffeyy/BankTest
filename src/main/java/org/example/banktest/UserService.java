@@ -1,6 +1,9 @@
 package org.example.banktest;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service
@@ -14,28 +17,25 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public String login(String username, String password) {
-        var optionalerNutzer = userRepository.findById(username);
-        DatabaseSpringboot echterNutzer = optionalerNutzer.get();
+    public String login(String username, String password)
+    {
 
-
-        if (optionalerNutzer.isEmpty()) {
-            return "Fehlgeschlagen: Benutzername nicht gefunden!";
-        } else {
-
-            if (!authPassword(username, password)) {
+        if (!authPassword(username, password))
+        {
                 return "falsche daten";
-            }
+        }
 
             return "eingeloggt";
         }
-    }
 
-    public String register(String username, String password) {
+
+    public String register(String username, String password)
+    {
 
         DatabaseSpringboot neuerNutzer = new DatabaseSpringboot(username, password);
 
-        if (authPassword(username, password)) {
+        if (authPassword(username, password))
+        {
             return "Nutzer existiert bereits";
         }
 
@@ -44,22 +44,37 @@ public class UserService {
     }
 
 
-    public boolean authPassword(String username, String password) {
+    public boolean authPassword(String username, String password)
+    {
 
         var nutzer = userRepository.findById(username);
 
-        if (nutzer.isEmpty()) {
+        if (nutzer.isEmpty())
+        {
             return false;
-        } else {
-
+        }
+        else
+        {
             return nutzer.get().getPasswort().equals(password);
         }
     }
 
-    public double getBalance(String username) {
+    public double getBalance(String username)
+    {
         return userRepository.findById(username)
                 .map(DatabaseSpringboot::getBalance)
                 .orElseThrow(() -> new IllegalArgumentException("Benutzer nicht gefunden"));
+    }
+
+    public String setDeposit(String username ,double amount)
+    {
+
+        DatabaseSpringboot nutzer = userRepository.findById(username).orElseThrow(() -> new IllegalArgumentException("benutzer nicht gefunden"));
+        nutzer.setBalance(getBalance(username)+ amount);
+
+          userRepository.save(nutzer);
+
+        return "erfolgreich eingezahlt";
     }
 
 }

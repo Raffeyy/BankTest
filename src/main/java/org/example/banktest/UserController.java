@@ -42,5 +42,11 @@ public class UserController {
         return userService.getBalance(user);
     }
 
+    @PostMapping("/deposit")
+    public String Deposit (@RequestParam String user ,@RequestParam double amount) {
+
+        return userService.setDeposit(user, amount);
+    }
+
 
 }
