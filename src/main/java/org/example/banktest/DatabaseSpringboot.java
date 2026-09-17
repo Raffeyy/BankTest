@@ -12,11 +12,13 @@ public class DatabaseSpringboot {
     private double balance;
     private int iban;
 
-    public DatabaseSpringboot() {
+    public DatabaseSpringboot()
+    {
     }
 
 
-    public DatabaseSpringboot(String username, String passwort) {
+    public DatabaseSpringboot(String username, String passwort)
+    {
         this.username = username;
         this.passwort = passwort;
         this.balance = balance;

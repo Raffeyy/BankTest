@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PostMapping("/deposit")
-    public String Deposit (@RequestParam String user ,@RequestParam double amount) {
+    public String deposit(@RequestParam String user, @RequestParam double amount) {
 
         return userService.setDeposit(user, amount);
     }

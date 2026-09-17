@@ -1,40 +1,34 @@
 package org.example.banktest;
 
-
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
-
 public class PasswordService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder; // Über Konstruktor injiziert
 
-    DatabaseSpringboot databaseSpringboot = new DatabaseSpringboot();
-
-
-    public PasswordService(UserRepository userRepository) {
+    public PasswordService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-
     public String forgotPassword(String user, String password) {
-        DatabaseSpringboot newPassword = new DatabaseSpringboot(user, password);
-
         var optionalerNutzer = userRepository.findById(user);
 
         if (optionalerNutzer.isEmpty()) {
-
             return "Dieses Konto existiert nicht";
-
         } else {
-            userRepository.save(newPassword);
+            DatabaseSpringboot bestehenderNutzer = optionalerNutzer.get();
+
+            // HIER WIRD GEHASHT
+            String gehashtesPasswort = passwordEncoder.encode(password);
+            bestehenderNutzer.setPasswort(gehashtesPasswort);
+
+            userRepository.save(bestehenderNutzer);
         }
 
         return "Neues passwort wurde erstellt";
     }
-
 }
-
-
-
-
