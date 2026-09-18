@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class PasswordService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder; // Über Konstruktor injiziert
+    private final BCryptPasswordEncoder passwordEncoder; 
 
     public PasswordService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
