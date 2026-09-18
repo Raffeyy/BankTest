@@ -57,4 +57,18 @@ public class UserService {
         userRepository.save(nutzer);
         return "erfolgreich eingezahlt";
     }
-}
+
+    public String setPayOut (String username, double amount) {
+
+        DatabaseSpringboot user = userRepository.findById(username)
+                .orElseThrow(() -> new IllegalArgumentException("benutzer nicht gefunden"));
+                if (user.getBalance() >= amount) {
+                    user.setBalance(getBalance(username) - amount);
+                    userRepository.save(user);
+                }
+                else {
+                    return "nicht genug Geld";
+                }
+                return "erfolgreich ausgezahlt";
+    }
+ }

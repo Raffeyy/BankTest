@@ -22,7 +22,6 @@ public class PasswordService {
         } else {
             DatabaseSpringboot bestehenderNutzer = optionalerNutzer.get();
 
-            // HIER WIRD GEHASHT
             String gehashtesPasswort = passwordEncoder.encode(password);
             bestehenderNutzer.setPasswort(gehashtesPasswort);
 
