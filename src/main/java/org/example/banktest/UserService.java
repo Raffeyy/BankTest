@@ -28,18 +28,18 @@ public class UserService {
 
         String gehashtesPasswort = passwordEncoder.encode(password);
 
-        DatabaseSpringboot neuerNutzer = new DatabaseSpringboot(username, gehashtesPasswort);
-        userRepository.save(neuerNutzer);
+        DatabaseSpringboot newUser = new DatabaseSpringboot(username, gehashtesPasswort);
+        userRepository.save(newUser);
         return "registriert";
     }
 
     public boolean authPassword(String username, String password) {
-        var nutzerOpt = userRepository.findById(username);
-        if (nutzerOpt.isEmpty()) {
+        var userOpt = userRepository.findById(username);
+        if (userOpt.isEmpty()) {
             return false;
         }
 
-        DatabaseSpringboot nutzer = nutzerOpt.get();
+        DatabaseSpringboot user = userOpt.get();
 
         return passwordEncoder.matches(password, nutzer.getPasswort());
     }
@@ -51,10 +51,10 @@ public class UserService {
     }
 
     public String setDeposit(String username, double amount) {
-        DatabaseSpringboot nutzer = userRepository.findById(username)
+        DatabaseSpringboot user = userRepository.findById(username)
                 .orElseThrow(() -> new IllegalArgumentException("benutzer nicht gefunden"));
         nutzer.setBalance(getBalance(username) + amount);
-        userRepository.save(nutzer);
+        userRepository.save(user);
         return "erfolgreich eingezahlt";
     }
 }
